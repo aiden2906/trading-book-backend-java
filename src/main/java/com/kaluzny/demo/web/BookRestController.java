@@ -34,12 +34,6 @@ public class BookRestController {
 
     private final BookRepository repository;
 
-    // @Transactional
-    // @PostConstruct
-    // public void init() {
-    //     repository.save(new Book(1L, "Ford", "Green"));
-    // }
-
     @Operation(summary = "Add a new Book", description = "endpoint for creating an entity", tags = {"Book"})
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Book created"),
@@ -118,7 +112,9 @@ public class BookRestController {
         Book updatedBook = repository.findById(id)
                 .map(entity -> {
                     entity.setName(book.getName());
-                    //TODO set content
+                    entity.setType(book.getType());
+                    entity.setContent(book.getContent());
+                    entity.setImages(book.getImages());
                     return repository.save(entity);
                 })
                 .orElseThrow(() -> new EntityNotFoundException("Book with id = Not found"));

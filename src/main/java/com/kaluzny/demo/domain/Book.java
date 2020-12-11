@@ -35,4 +35,8 @@ public class Book {
     @Schema(description = "Content of the Book.", example = "Red", required = true)
     @Size(max = 200)
     private String content;
+
+    @Schema(description = "Content of the Book.", example = "Red", required = true)
+    @Size(max = 200)
+    private List<String> images;
 }
