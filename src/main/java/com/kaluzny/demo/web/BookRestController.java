@@ -17,6 +17,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +26,7 @@ import javax.persistence.EntityNotFoundException;
 import javax.validation.constraints.NotNull;
 import java.util.Collection;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping(value = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
@@ -114,7 +116,10 @@ public class BookRestController {
                     entity.setName(book.getName());
                     entity.setType(book.getType());
                     entity.setContent(book.getContent());
-                    entity.setImages(book.getImages());
+                    entity.setImage(book.getImage());
+                    entity.setPhone(book.getPhone());
+                    entity.setAddress(book.getAddress());
+                    entity.setUsername(book.getUsername());
                     return repository.save(entity);
                 })
                 .orElseThrow(() -> new EntityNotFoundException("Book with id = Not found"));

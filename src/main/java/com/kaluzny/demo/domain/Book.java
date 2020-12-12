@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Size;
+import java.util.List;
 import lombok.*;
 
 
@@ -33,10 +34,22 @@ public class Book {
     private String type;
 
     @Schema(description = "Content of the Book.", example = "Red", required = true)
-    @Size(max = 200)
+    @Size(max = 2000)
     private String content;
 
     @Schema(description = "Content of the Book.", example = "Red", required = true)
     @Size(max = 200)
-    private List<String> images;
+    private String image;
+
+    @Schema(description = "Content of the Book.", example = "Red", required = true)
+    @Size(max = 200)
+    private String address;
+
+    @Schema(description = "Content of the Book.", example = "Red", required = true)
+    @Size(max = 200)
+    private String phone;
+
+    @Schema(description = "Content of the Book.", example = "Red", required = true)
+    @Size(max = 200)
+    private String username;
 }
